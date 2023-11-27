@@ -81,14 +81,26 @@ public class Game_369 {
 			
 		
 		//for... 깃허브 테스트용 추가
-		for() {
-			System.out.println(askd);
-		}
+		int num3 = 1;
+		String blink1 = "";
+		for(int i = 1; i <= 50; i++) {
+			blink = "";
+			if(i % 10 == 3 || i % 10 == 6 || i % 10 == 9) {
+				blink += "○";
+			}
+			if(i / 10 == 3) {
+				blink += "○";
+			}
+			if (i % 10 != 3 && i % 10 != 6 && i % 10 != 9 && i / 10 != 3){
+				blink += i;
+			}
+			System.out.print(blink +"\t");
+			if(i % 10 == 0)System.out.println();
 		
 		
+		//추가 됐나??   
 		
 		
-		
-		
+		}		
 	}
 }
