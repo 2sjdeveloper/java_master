@@ -80,7 +80,10 @@ public class Game_369 {
 		}
 			
 		
-		
+		//for... 깃허브 테스트용 추가
+		for() {
+			System.out.println(askd);
+		}
 		
 		
 		
