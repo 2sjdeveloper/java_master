@@ -86,4 +86,4 @@ public class Exam_p128 {
 		
 	}//end main
 
-}//end clss
+}//end class
