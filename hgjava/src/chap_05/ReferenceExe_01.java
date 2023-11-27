@@ -31,6 +31,15 @@ public class ReferenceExe_01 {
 		
 		System.out.println(myFriend == yourFriend); //속성이 같은것 같아도 이 명령은 주소값을 비교하기때문에 결과는 false로 나옴.
 		
+		yourFriend = null;
+		System.out.println(myFriend.name);
+		try {
+			System.out.println(yourFriend.name);
+		}catch(Exception e) {
+			System.out.println("null값을 참조합니다."); //예외처리.. 그게 뭐지....?
+		}
+		
+		
 		//기본타입.
 		int a = 10;
 		int b = a;
@@ -38,15 +47,14 @@ public class ReferenceExe_01 {
 		a = 20;
 		
 		//참조타입: 주소값을 변수에 저장.
-		String name = "신용권"; //23dbdae34334 ?? 이게 뭐여?
+		String name = new String("신용권"); //new String("신용권"); // 23dbdae34334 ?? 이게 뭐여?
 		String hobby = "독서";
 		
-		String name1 = name;
-		name1 = "김용권";
+		String name1 = new String ("신용권"); //new String("신용권");
 		System.out.println("name: " + name);
 		System.out.println("name1: " + name1);
 		
-		
+		System.out.println(name == name1); // == 이거 대신에 equals 메소드 활용해야함.
 		
 		
 	}
