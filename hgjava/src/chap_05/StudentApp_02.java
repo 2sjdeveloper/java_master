@@ -61,9 +61,16 @@ public class StudentApp_02 {
 		
 		for(int i = 0; i < students.length; i++) {
 			//조건 추가 => 변경점수 입력. 
-			if (name.equals(students))
+			if (name.equals(students[i].name)) {
+				System.out.println("변경점수 입력 >>");
+				students[i].score = Integer.parseInt(scn.nextLine());
+				exists = true;
+			}
 		}
 		//찾는 이름 없음.
+		if(!exists) {
+			System.out.println("조회할 이름이 없습니다");
+		}
 		
 	}//end of modify
 
