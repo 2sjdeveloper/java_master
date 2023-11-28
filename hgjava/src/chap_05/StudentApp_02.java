@@ -5,113 +5,108 @@ import java.util.Scanner;
 public class StudentApp_02 {
 	static Scanner scn = new Scanner(System.in);
 	static Student[] students = null;
-	
-	public static void addStudent() { //¸Þ¼Òµå ¸¸µé±â		
-		System.out.println("ÇÐ»ýÁ¤º¸ ÀÔ·Â >>");
-		for(int i = 0; i < students.length; i++) {
+
+	public static void addStudent() { // ë©”ì†Œë“œ ë§Œë“¤ê¸°
+		System.out.println("í•™ìƒì •ë³´ ìž…ë ¥ >>");
+		for (int i = 0; i < students.length; i++) {
 			Student student = new Student();
-			System.out.print("ÇÐ»ý ÀÌ¸§ ÀÔ·Â >> ");
+			System.out.print("í•™ìƒ ì´ë¦„ ìž…ë ¥ >> ");
 			student.name = scn.nextLine();
-			System.out.print("ÇÐ»ý Á¡¼ö ÀÔ·Â >> ");
+			System.out.print("í•™ìƒ ì ìˆ˜ ìž…ë ¥ >> ");
 			student.score = Integer.parseInt(scn.nextLine());
-			System.out.print("³²/¿© ÀÔ·Â >> ");
-			student.gender = scn.nextLine();			
-			students[i] = student;					
+			System.out.print("ë‚¨/ì—¬ ìž…ë ¥ >> ");
+			student.gender = scn.nextLine();
+			students[i] = student;
 		}
-	} //end of addStudent()
-	
+	} // end of addStudent()
+
 	public static void searchStudent() {
-		System.out.print("Á¶È¸ÇÒ ÀÌ¸§ ÀÔ·Â >>");
+		System.out.print("ì¡°íšŒí•  ì´ë¦„ ìž…ë ¥ >>");
 		String name = scn.nextLine();
-		boolean exists = false;				
-		//ÇÐ»ýÀÌ¸§ - Á¡¼ö.. ÇüÅÂ·Î Ãâ·Â.
-		for(Student stdn : students) {
-			if(name.equals(stdn.name)) {											
-				System.out.println("ÀÌ¸§Àº " + stdn.name + ", Á¡¼ö´Â " + stdn.score);
-				exists = true;											
+		boolean exists = false;
+		// í•™ìƒì´ë¦„ - ì ìˆ˜.. í˜•íƒœë¡œ ì¶œë ¥.
+		for (Student stdn : students) {
+			if (name.equals(stdn.name)) {
+				System.out.println("ì´ë¦„ì€ " + stdn.name + ", ì ìˆ˜ëŠ” " + stdn.score);
+				exists = true;
 			}
 		}
-		if(!exists) {
-			System.out.println("ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù");
-		}		
-	}//end of searchStudent();
-	
+		if (!exists) {
+			System.out.println("ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤");
+		}
+	}// end of searchStudent();
+
 	public static void analysis() {
 		int sumOfMen = 0, cntOfMen = 0;
 		int sumOfWomen = 0, cntOfWomen = 0;
-		for(Student stn : students) { //È®Àå for¹®
-			if(stn.gender.equals("³²")) {
+		for (Student stn : students) { // í™•ìž¥ forë¬¸
+			if (stn.gender.equals("ë‚¨")) {
 				sumOfMen += stn.score;
-				cntOfMen++;						
-			}else if(stn.gender.equals("¿©")) {
+				cntOfMen++;
+			} else if (stn.gender.equals("ì—¬")) {
 				sumOfWomen += stn.score;
 				cntOfWomen++;
 			}
 		}
-		System.out.println("³²ÇÐ»ýÀÇ Æò±Õ: " + (sumOfMen * 1.0 / cntOfMen));
-		System.out.println("¿©ÇÐ»ýÀÇ Æò±Õ: " + (sumOfWomen * 1.0 / cntOfWomen));
-	}//end of analysis()
-	
-	
-	
-	public static void modify() { //ÀÌ¸§ ÀÔ·Â -> º¯°æ Á¡¼ö ÀÔ·Â
-		System.out.print("Á¶È¸ÇÒ ÀÌ¸§ ÀÔ·Â >>");
+		System.out.println("ë‚¨í•™ìƒì˜ í‰ê· : " + (sumOfMen * 1.0 / cntOfMen));
+		System.out.println("ì—¬í•™ìƒì˜ í‰ê· : " + (sumOfWomen * 1.0 / cntOfWomen));
+	}// end of analysis()
+
+	public static void modify() { // ì´ë¦„ ìž…ë ¥ -> ë³€ê²½ ì ìˆ˜ ìž…ë ¥
+		System.out.print("ì¡°íšŒí•  ì´ë¦„ ìž…ë ¥ >>");
 		String name = scn.nextLine();
-		boolean exists = false;	
-		
-		for(int i = 0; i < students.length; i++) {
-			//Á¶°Ç Ãß°¡ => º¯°æÁ¡¼ö ÀÔ·Â. 
+		boolean exists = false;
+
+		for (int i = 0; i < students.length; i++) {
+			// ì¡°ê±´ ì¶”ê°€ => ë³€ê²½ì ìˆ˜ ìž…ë ¥.
 			if (name.equals(students[i].name)) {
-				System.out.println("º¯°æÁ¡¼ö ÀÔ·Â >>");
+				System.out.println("ë³€ê²½ì ìˆ˜ ìž…ë ¥ >>");
 				students[i].score = Integer.parseInt(scn.nextLine());
 				exists = true;
 			}
 		}
-		//Ã£´Â ÀÌ¸§ ¾øÀ½.
-		if(!exists) {
-			System.out.println("Á¶È¸ÇÒ ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù");
+		// ì°¾ëŠ” ì´ë¦„ ì—†ìŒ.
+		if (!exists) {
+			System.out.println("ì¡°íšŒí•  ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤");
 		}
-		
-	}//end of modify
 
-	
-	
+	}// end of modify
+
 	public static void main(String[] args) {
-		boolean run = true; 
-		
+		boolean run = true;
+
 		int studentNum = 0;
-		
-		while (run) {			
-			System.out.println("1. ÇÐ»ý¼ö 2. Á¡¼öÀÔ·Â 3. Á¶È¸ 4. ºÐ¼®(ÃÖ°íÁ¡¼ö, Æò±Õ) 5. ¼öÁ¤ 6. Á¾·á");
+
+		while (run) {
+			System.out.println("1. í•™ìƒìˆ˜ 2. ì ìˆ˜ìž…ë ¥ 3. ì¡°íšŒ 4. ë¶„ì„(ìµœê³ ì ìˆ˜, í‰ê· ) 5. ìˆ˜ì • 6. ì¢…ë£Œ");
 			int menu = scn.nextInt();
 			scn.nextLine();
-			
-			switch(menu) {
+
+			switch (menu) {
 			case 1:
-				System.out.println("ÇÐ»ý¼ö ÀÔ·Â >>");
-				studentNum = Integer.parseInt(scn.nextLine()); // "3" -> 3 .. ¹®ÀÚ¿­À» int Å¸ÀÔÀ¸·Î ¹Ù²ãÁÜ
+				System.out.println("í•™ìƒìˆ˜ ìž…ë ¥ >>");
+				studentNum = Integer.parseInt(scn.nextLine()); // "3" -> 3 .. ë¬¸ìžì—´ì„ int íƒ€ìž…ìœ¼ë¡œ ë°”ê¿”ì¤Œ
 				students = new Student[studentNum];
 				break;
 			case 2:
-				addStudent();				
+				addStudent();
 				break;
 			case 3:
-				searchStudent();				
+				searchStudent();
 				break;
-				
-			case 4: //ºÐ¼®.
-				analysis();				
+
+			case 4: // ë¶„ì„.
+				analysis();
 				break;
-			case 5: 
+			case 5:
 				modify();
 				break;
 			case 6:
-				System.out.println("Á¾·á >>");
+				System.out.println("ì¢…ë£Œ >>");
 				run = false;
 				break;
-				
-			}
-		}//end of while			
-	}//end of main()
-} //end of class
 
+			}
+		} // end of while
+	}// end of main()
+} // end of class

@@ -10,66 +10,65 @@ public class StudentApp_01 {
 		int[] scores = null;
 		String[] names = null;
 
-		
-		//1. «–ª˝ºˆ 2. ¡°ºˆ¿‘∑¬ 3. ∏Ò∑œ√‚∑¬ 4. ∫–ºÆ(√÷∞Ì¡°ºˆ, ∆Ú±’) 5. ¡æ∑·
-		
+		// 1. ÌïôÏÉùÏàò 2. Ï†êÏàòÏûÖÎ†• 3. Î™©Î°ùÏ∂úÎ†• 4. Î∂ÑÏÑù(ÏµúÍ≥†Ï†êÏàò, ÌèâÍ∑†) 5. Ï¢ÖÎ£å
+
 		boolean run = true;
 		while (run) {
-			
-			System.out.println("1. «–ª˝ºˆ 2. ¡°ºˆ¿‘∑¬ 3. ∏Ò∑œ√‚∑¬ 4. ∫–ºÆ(√÷∞Ì¡°ºˆ, ∆Ú±’) 5. ¡æ∑·");
-			int menu = scn.nextInt(); //3¿ª ¿‘∑¬«œ∞Ì ø£≈Õ∏¶ ƒ°∏È ¿‘∑¬«— 3¿ª ¿–æÓµÈ¿Ã¥¬ ∞Õ¿Ã nextInt.
-			scn.nextLine(); //ø£≈Õµµ ∞∞¿Ã √≥∏Æ«‘... π´Ωº ∏ª¿Œ¡ˆ æÀµÌ∏ªµÌ..
-			
-			switch(menu) {
+
+			System.out.println("1. ÌïôÏÉùÏàò 2. Ï†êÏàòÏûÖÎ†• 3. Î™©Î°ùÏ∂úÎ†• 4. Î∂ÑÏÑù(ÏµúÍ≥†Ï†êÏàò, ÌèâÍ∑†) 5. Ï¢ÖÎ£å");
+			int menu = scn.nextInt(); // 3ÏùÑ ÏûÖÎ†•ÌïòÍ≥† ÏóîÌÑ∞Î•º ÏπòÎ©¥ ÏûÖÎ†•Ìïú 3ÏùÑ ÏùΩÏñ¥Îì§Ïù¥Îäî Í≤ÉÏù¥ nextInt.
+			scn.nextLine(); // ÏóîÌÑ∞ÎèÑ Í∞ôÏù¥ Ï≤òÎ¶¨Ìï®... Î¨¥Ïä® ÎßêÏù∏ÏßÄ ÏïåÎìØÎßêÎìØ..
+
+			switch (menu) {
 			case 1:
-				System.out.println("«–ª˝ ºˆ ¿‘∑¬ >>");
+				System.out.println("ÌïôÏÉù Ïàò ÏûÖÎ†• >>");
 				studentNum = scn.nextInt();
-				scores = new int [studentNum];
+				scores = new int[studentNum];
 				names = new String[studentNum];
 				break;
 			case 2:
-				System.out.println("¡°ºˆ ¿‘∑¬ >>");
-				//for π›∫π.
-				for(int i = 0; i < scores.length; i++) {
-					System.out.print("names[" + i +"]>>");
+				System.out.println("Ï†êÏàò ÏûÖÎ†• >>");
+				// for Î∞òÎ≥µ.
+				for (int i = 0; i < scores.length; i++) {
+					System.out.print("names[" + i + "]>>");
 					names[i] = scn.nextLine();
 					System.out.print("scores[" + i + "]>> ");
 					scores[i] = scn.nextInt();
-					scn.nextLine(); 
+					scn.nextLine();
 				}
 				break;
 			case 3:
-				System.out.println("∏Ò∑œ √‚∑¬ >>");
-				for(int i = 0; i < scores.length; i++) {
-					System.out.print("¿Ã∏ß¿∫ " + names[i] + ", ¡°ºˆ¥¬ "+ scores[i] + "\n");
+				System.out.println("Î™©Î°ù Ï∂úÎ†• >>");
+				for (int i = 0; i < scores.length; i++) {
+					System.out.print("Ïù¥Î¶ÑÏùÄ " + names[i] + ", Ï†êÏàòÎäî " + scores[i] + "\n");
 				}
 				break;
 			case 4:
-				System.out.println("∫–ºÆ >>");
-				//√÷∞Ì¡°ºˆ √‚∑¬. ±∏«ˆ.
+				System.out.println("Î∂ÑÏÑù >>");
+				// ÏµúÍ≥†Ï†êÏàò Ï∂úÎ†•. Íµ¨ÌòÑ.
 				int maxScore = 0;
 				double avg = 0;
 				int sum = 0;
-				String maxName ="";
-				
+				String maxName = "";
+
 				// for (int num : scores) {
-				for(int i = 0; i < scores.length; i++) {
-					sum += scores[i]; // sum = sum + num;			
-					if(maxScore <scores[i]) {
+				for (int i = 0; i < scores.length; i++) {
+					sum += scores[i]; // sum = sum + num;
+					if (maxScore < scores[i]) {
 						maxScore = scores[i];
-						maxName = names[i];				
-					}					
+						maxName = names[i];
+					}
 				}
 				avg = sum * 1.0 / scores.length;
-				System.out.println(maxName + "¿«" + " ¡°ºˆ" + maxScore + ", ∆Ú±’: " + avg);
+				System.out.println(maxName + "Ïùò" + " Ï†êÏàò" + maxScore + ", ÌèâÍ∑†: " + avg);
 				break;
-								
+
 			case 5:
-				System.out.println("¡æ∑· >>");
+				System.out.println("Ï¢ÖÎ£å >>");
 				run = false;
 				break;
-			} //end of switch.			
-		} //end of while.		
+			} // end of switch.
+		} // end of while.
 		System.out.println("end of prog.");
 	}
 
