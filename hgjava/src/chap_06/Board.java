@@ -1,5 +1,5 @@
 package chap_06;
-
+//테스트용
 public class Board {
 	int textNo;
 	String title;
