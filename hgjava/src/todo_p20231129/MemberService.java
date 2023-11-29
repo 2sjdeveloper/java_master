@@ -7,3 +7,4 @@ public class MemberService {
 	}
 
 }
+  //집에서 숙제는 못하고 깃이랑 이클립스 연동만 했는데 이거 학원 가서도 뜨겠지...?

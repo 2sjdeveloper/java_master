@@ -22,7 +22,7 @@ public class StudentApp {
 				String name = scn.nextLine();
 				System.out.println("영어점수입력 >>");
 				int eng = Integer.parseInt(scn.nextLine());
-				System.out.println("수학점수입력 >>");
+				System.out.println("수학점수입력 >>"); 
 				int math = Integer.parseInt(scn.nextLine());
 
 				Student std = new Student(no, name, eng, math);
