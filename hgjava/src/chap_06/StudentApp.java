@@ -37,7 +37,7 @@ public class StudentApp {
 //						students[i] = std;
 //						break;
 //					}
-//				}
+//				} 
 //				exe.addStudent(std);
 //				System.out.println("저장되었습니다.");
 				break;
