@@ -1,13 +1,12 @@
 package chap_06;
-//테스트용
+
 public class Board {
 	int textNo;
 	String title;
 	String writer;
 	String text;
 	String date;
-	
-	//깃허브 테스트용 주석
+
 	
 	Board(int textNo, String title, String writer, String text, String date){
 		this.textNo = textNo;
