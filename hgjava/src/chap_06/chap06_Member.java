@@ -10,6 +10,7 @@ public class chap06_Member {
 	private String memberName;
 	private String phone; // 휴대폰 번호 사이에 있는 - 하이픈이 문자로 인식되기때문에 string으로 설정
 	private String gender; // Men or Women = > M, W
+	
 	// 프라이빗으로 하면 메소드로 값을 담게 해줌. 왜냐하면 사람들이 입력값을 지맘대로 쓰기때문에 값을 통일하기 위해서.
 
 	// 생성자 : 필드의 초기값을 지정하는 역할
