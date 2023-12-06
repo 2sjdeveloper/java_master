@@ -12,6 +12,7 @@ public class BookExe {
 	BookExe(){
 		books = new ArrayList<Book>();
 		books.add(new Book("B001", "이것이자바다", "신용권", "한빛미디어", 25000));
+		books.add(new Book("B002", "이것이자바다", "신용권", "한빛미디어", 25000));
 	}
 	
 	// 1.등록
