@@ -1,36 +1,67 @@
 package todo_p20231205;
 
-import lombok.Data;
-
-@Data
 public class Book {
 	private String bookCode;
 	private String bookTitle;
 	private String author;
-	private String publisher;
+	private String press;
 	private int price;
-	
-	Book(){
-		
+
+	Book() {
+
 	}
-	
-	public Book(String bookCode, String bookTitle, String author, String publisher, int price) {
+
+	public Book(String bookCode, String bookTitle, String author, String press, int price) {
 		this.bookCode = bookCode;
 		this.bookTitle = bookTitle;
 		this.author = author;
-		this.publisher = publisher;
+		this.press = press;
 		this.price = price;
 	}
-	
+
+	// 메소드 정의.
 	void showInfo() {
-		System.out.println(bookCode + " " +bookTitle  + " " + author + " "+ price);
+		System.out.println(bookCode + "   " + bookTitle + "   " + author + "   " + price);
 	}
-	
-//	String showInfo() {
-//		String result = bookCode + " " +bookTitle  + " " + author + " "+ price;
-//		return result;
-//	}
-		
-	
-	
-}//end of class
+
+	String getBookCode() {
+		return bookCode;
+	}
+
+	void setBookCode(String bookCode) {
+		this.bookCode = bookCode;
+	}
+
+	String getBookTitle() {
+		return bookTitle;
+	}
+
+	void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
+	}
+
+	String getAuthor() {
+		return author;
+	}
+
+	void setAuthor(String author) {
+		this.author = author;
+	}
+
+	String getPress() {
+		return press;
+	}
+
+	void setPress(String press) {
+		this.press = press;
+	}
+
+	int getPrice() {
+		return price;
+	}
+
+	void setPrice(int price) {
+		this.price = price;
+	}
+
+}

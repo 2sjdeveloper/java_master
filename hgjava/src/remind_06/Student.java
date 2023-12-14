@@ -12,12 +12,17 @@ public class Student {
 	String stuName;
 	int eng;
 	int math;
+	
+	//기본 생성자 만들기
+	Student(){
+		
+	}
 
 	Student(String stuNo, String stuName, int eng, int math) {
-		this.stuNo = stuNo;
-		this.stuName = stuName;
-		this.eng = eng;
-		this.math = math;
+		this.stuNo = stuNo; //stu_no
+		this.stuName = stuName; //stu_name
+		this.eng = eng; //eng
+		this.math = math; //math
 	}
 
 	void showInfo() {
