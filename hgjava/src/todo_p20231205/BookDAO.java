@@ -28,6 +28,20 @@ public class BookDAO {
 		return conn;
 	}
 
+	// 연결 접속 해제
+	void disconn() {
+		try {
+			if (conn != null)
+				conn.close();
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 //1. 등록
 	boolean addBook(Book book) {
 		getConn();
@@ -72,7 +86,10 @@ public class BookDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
 		}
+
 		return books;
 	} // end of getBookList()
 

@@ -29,7 +29,7 @@ public class BookApp {
 				int price = Integer.parseInt(scn.nextLine());
 
 				Book std = new Book(code, name, author, press, price);
-				// students 배열에 한건 저장.
+				// 
 				if (dao.addBook(std)) {
 					System.out.println("저장되었습니다.");
 				} else {
@@ -44,7 +44,7 @@ public class BookApp {
 
 					stdnt.showInfo();
 
-				} // Student[] 타입.
+				} // 
 				break;
 
 			case 3: // 단건조회.

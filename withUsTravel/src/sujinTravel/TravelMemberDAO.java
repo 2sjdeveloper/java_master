@@ -31,8 +31,8 @@ public class TravelMemberDAO {
 		return conn;
 	}
 
-	// 1. 아이디, 패스워드 따라서 멤버 데이터를 보여주는
-	// 2. 관리자/사용자 : 리턴 타입을
+
+
 	TravelMember logInCheck(String id, String pw) {
 		getConn();
 		String sql = "select * from travel_member where mem_id = ? and mem_pw = ?";
