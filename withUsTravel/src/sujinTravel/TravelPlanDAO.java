@@ -25,7 +25,7 @@ public class TravelPlanDAO {
 	ResultSet rs;
 
 	Connection getConn() {
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@192.168.0.33:1521:xe";
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(url, "dev", "dev");
@@ -34,6 +34,7 @@ public class TravelPlanDAO {
 		}
 		return conn;
 	}
+
 	void disconn() {
 		try {
 			if (conn != null)
@@ -47,7 +48,7 @@ public class TravelPlanDAO {
 		}
 	}
 
-	//1. 여행 계획 입력
+	// 1. 여행 계획 입력
 	boolean addPlan(TravelPlan tp) {
 		getConn();
 		String sql = "insert into travel_plan\r\n" + "values (text_auto_no.nextval, ?, ?, ?, ?, ?)";
@@ -66,7 +67,7 @@ public class TravelPlanDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disconn();
 		}
 		return false;
@@ -94,11 +95,12 @@ public class TravelPlanDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			disconn();
 		}
 		return travels;
 	}
+
 	// 3. 조회하기
 	TravelPlan getTravelPlan(String travelNo) {
 		getConn();
@@ -109,7 +111,7 @@ public class TravelPlanDAO {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, travelNo);
 			rs = psmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				TravelPlan travelPlan = new TravelPlan();
 				travelPlan.setTextNo(rs.getInt("text_no"));
 				travelPlan.setAreaCode(rs.getString("area_code"));
@@ -117,35 +119,33 @@ public class TravelPlanDAO {
 				travelPlan.setUseTime(rs.getString("use_time"));
 				travelPlan.setUseMoney(rs.getString("use_money"));
 				travelPlan.setMemId(rs.getString("mem_id"));
-				
+
 				return travelPlan;
-				
+
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	
-	//관리자 권한 1.
-//					boolean removeTravel(int textNo) {
-//						getConn();
-//						String sql = "delete from travel_plan" + "where text_no = ?";
-//						
-//						try {
-//							removeTravel.setTextNo(rs.getInt("text_no"));
-//							psmt = conn.prepareStatement(sql);
-//							psmt.setInt(1, textNo);
-//							
-//							int r = psmt.executeUpdate();
-//							if (r > 0) {
-//								return true;
-//							}
-//						}catch (SQLException e) {
-//							e.printStackTrace();
-//						}
-//						return false;
-//					}
+
+	// 관리자 권한 2. 삭제하기
+	boolean removeTravel(String travelNo) {
+		getConn();
+		String sql = "delete from travel_plan " + "where text_no = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, travelNo);
+
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }// end of class

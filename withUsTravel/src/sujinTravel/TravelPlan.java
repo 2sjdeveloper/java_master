@@ -9,6 +9,7 @@ public class TravelPlan {
 	private String memId;	
 	private String travelLike;
 	private String textHide;
+
 	
 
 	TravelPlan() {
@@ -93,6 +94,8 @@ public class TravelPlan {
 	public void setTextHide(String textHide) {
 		this.textHide = textHide;
 	}
+
+
 	
 
 
