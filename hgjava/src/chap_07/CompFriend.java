@@ -19,7 +19,7 @@ public class CompFriend extends Friend {
 		return dept;
 	}
 
-	public void setCompany(String company) {
+	public void setCompany(String company) { 
 		this.company = company;
 	}
 
