@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.board.mapper.BoardMapper"> <!-- 네임스페이스가 자바에서 패키지 역할. -->
+	<select id="selectList" resultType="board">
+		select * from board order by 1  <!-- 세미콜론 있으면 안되고 쿼리만 있어야됨. -->
+	</select>
+	
+	<select id="selectOne" resultType="board" parameterType="int">
+	select * from board where board_no = #{bno}
+	</select>
+
+	<insert id="insertBoard" parameterType="board">
+		insert into board (board_no, title, writer, content)
+		values(board_seq.nextval, #{title}, #{writer}, #{content})
+	</insert>
+	
+	<update id="updateBoard" parameterType="board">
+	update board set content = #{content} where board_no = #{boardNo}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+	delete from board where board_no = #{bno}
+	</delete>
+	
+	<update id="updateCnt">
+	update board set click_cnt = click_cnt + 1 where board_no = #{bno}
+	</update>
+	
+	<delete id="remStudent" parameterType="String">
+	delete from student where stu_no = #{stuNo}
+	</delete>
+</mapper>
+
+<!-- 닫으면 에러 없어짐.. -->

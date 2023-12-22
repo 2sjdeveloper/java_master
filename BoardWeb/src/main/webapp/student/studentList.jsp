@@ -1,6 +1,6 @@
-<%@page import="common.Student"%>
+<%@page import="com.yedam.student.vo.Student"%>
 <%@page import="java.util.List"%>
-<%@ page import="common.StudentDAO"%>
+<%@ page import="com.yedam.student.mapper.StudentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- < % @ 다음 지시자 사용 -->
