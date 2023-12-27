@@ -16,7 +16,7 @@ public class BoardFormControl implements Control {
 		// 등록화면 open. 값을 입력하지는 않고 화면을 열어주는 기능만 있음.
 
 		// 이동 할 페이지
-		RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/board/addBoardForm.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("board/addBoardForm.tiles");
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
