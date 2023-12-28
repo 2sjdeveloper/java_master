@@ -8,6 +8,14 @@
 	<select id="selectMember" resultType="member">
 		select * from member where id=#{id} and pw=#{pw} <!-- 세미콜론 있으면 안되고 쿼리만 있어야됨. -->
 	</select>
+	
+<select id="selectList" resultType="member">
+		select * from member 
+	</select>
+	
+	<select id="selectOne" resultType="member" parameterType="String">
+		select * from member where id=#{id}
+	</select>
 
 </mapper>
 

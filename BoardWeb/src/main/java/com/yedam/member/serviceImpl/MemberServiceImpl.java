@@ -1,5 +1,7 @@
 package com.yedam.member.serviceImpl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -14,8 +16,19 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberVO login(String id, String pw) {
-		// TODO Auto-generated method stub
 		return mapper.selectMember(id, pw);
+	}
+
+	@Override
+	public List<MemberVO> memberList() {
+		// TODO Auto-generated method stub
+		return mapper.selectList();
+	}
+
+	@Override
+	public MemberVO getMember(String id) {
+		// TODO Auto-generated method stub
+		return mapper.selectOne(id);
 	}
 
 }
