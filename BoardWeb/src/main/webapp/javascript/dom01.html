@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom01.html</title>
+</head>
+<body>
+    <!--표
+    <table>
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>전화번호</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>user1</td>
+                <td>홍길동</td>
+                <td>010-1111</td>
+            </tr>
+        </tbody>        
+    </table> -->
+
+    <!-- <ul>
+        <li>apple</li>
+        <li>banana</li>
+        <li>cherry</li>
+    </ul> -->
+    
+
+
+    <script>
+        const fruits = ['apple','banana','cherry']; //new Array();
+
+        console.log(window);
+        let btn = document.createElement('button'); //Document object dom.
+        btn.innerText = 'Btn';
+        btn.addEventListener('click',function (){
+            window.alert('Click 됨');
+        })
+        console.log(btn);
+
+        document.querySelector('body').appendChild(btn);
+
+
+        let bdy = document.querySelector('body');
+        let ul = document.createElement('ul');
+        //배열 for..of..
+        for(let fruit of fruits){
+            let li1 = document.createElement('li');
+            li1.innerText = fruits
+            ul.appendChild(li1);
+
+        }
+
+
+        // let li1 = document.createElement('li');
+        // li1.innerText = 'apple';
+        // ul.appendChild(li1);
+
+        // let li2 = document.createElement('li');
+        // li2.innerText = 'banana';
+        // ul.appendChild(li2);
+
+        // let li3 = document.createElement('li');
+        // li3.innerText = 'cherry';
+        // ul.appendChild(li3);
+
+        console.log(ul);
+        bdy.appendChild(ul);
+
+        
+        let tbl = document.createElement('table');
+        let thd = document.createElement('thead');
+        let tbd = document.createElement('tbody');
+        let tr1 = document.createElement('tr');
+        let tr2 = document.createElement('tr');
+        let th1 = document.createElement('th');
+        let th2 = document.createElement('th');
+        let th3 = document.createElement('th');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+
+        tbl.appendChild(thd);
+        thd.appendChild(tr1);
+        tr1.appendChild(th1);
+        tr1.appendChild(th2);
+        tr1.appendChild(th3);
+
+        // th1.innerText = '아이디';
+        // th2.innerText = '이름';
+        // th3.innerText = '전화번호';
+
+        const users = ['아이디','이름','전화번호'];
+        //배열 for..of..
+        for(let th of info){
+            let th1 = document.createElement('th');
+            th1.innerText = th;
+            tr1.appendChild(th1);
+        }
+
+        const user = ['user1','홍길동','010-1111'];
+        for(let td of user){
+            let th1 = document.createElement('td');
+        }
+        
+        
+
+        tbl.appendChild(tbd);
+        tbd.appendChild(tr2);
+        tr2.appendChild(td1);
+        tr2.appendChild(td2);
+        tr2.appendChild(td3);
+
+        td1.innerText = 'user1';
+        td2.innerText = '홍길동';
+        td3.innerText = '010-1111';
+
+        bdy.appendChild(tbl);
+
+
+
+
+        
+        
+
+
+       
+
+    </script>
+</body>
+</html>

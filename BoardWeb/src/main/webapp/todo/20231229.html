@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo/20231229.html</title>
+    <style>
+        #show {
+            width: 300px;
+            height: 250px;
+            background-color: aqua;
+        }
+        span{
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="show"> <!-- div#show 이렇게 입력했음.-->
+        <span>Lorem</span>
+        <span>ipsum,</span>
+    </div> 
+
+    <script>
+        const words = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, sint maiores aspernatur excepturi autem dolores harum quo id dolorum nisi doloribus nam nemo ipsum, architecto corrupti est? Repudiandae, minima porro?'
+
+        const wordAry = words.sprit('  ');
+    </script>
+    
+</body>
+</html>
+<!-- 단어들이.. 배열로.. 나열되게...? 돔 방식으로? -->
