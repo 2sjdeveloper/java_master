@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable.html</title>
+</head>
+
+<body>
+    <p>hello</p>
+    <div id="show"> <!-- //3살보다 큰 라이언하고 어피치가 표형식으로 나오게 돔으로 만들기.. -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+          
+        </table>
+    </div>
+
+
+    <!-- <script src="variable.js"></script> -->
+    <script>
+
+        //책 28쪽~ 데이터 타입
+        function myfunc() {
+            console.log('myfunc call.');
+            return 'undefined';
+        }
+        console.log(myfunc());
+        //null, undefined의 차이.
+        let num = null;
+        console.log(typeof num);
+
+        let num1;
+        let num2 = null;
+        console.log(num1 === num2); // === 세개는 값과 데이터타입을 모두 비교.
+
+        if (!num1) { // null, undefined, '', 0 => false.
+            console.log('num값은 false입니다')
+        }
+
+        //paseInt, parseFloat : 형변환.
+        num1 = '30'; //자바스크립트는 그냥 숫자고 뭐고 입력하면 다 문자타입임. 필요하면 따로 변환해줘야됨.
+        console.log(num1, typeof num1); //string 문자타입으로 출력.
+        num1 = parseInt(num1);
+        console.log(num1, typeof num1); // number 숫자 타입으로 출력. 
+
+        num1 = 'a30';
+        console.log(num1, typeof num1); //string 문자타입으로 출력.
+        num1 = parseInt(num1);
+        console.log(num1, typeof num1); // NaN 으로 출력. not a number 이란 뜻임. 
+
+
+        //책 50쪽~ 
+        //삼항 연산자.
+        let result = 3 > 2 ? 'true' : 'false'; //? 앞에 있는 연산이 참이면 트루, 아니면 폴스를 출력.
+        console.log(result);
+
+        //논리 연산자.
+        console.log(!'문자열');
+        console.log(!!'문자열');
+
+        //비트 연산자
+        console.log(12 & 3); //0으로 출력
+        // 12 => 1100 (12를 2진수로 변환)
+        // 3  => 0011 (3을 2진수로 변환하면 11인데 계산편의를 위해 앞에 0을 두개 붙임.)
+        console.log(12 | 3); //15로 출력
+        console.log(12 >> 1); //2진수 110 이란 의미가 됨. 6으로 출력
+        console.log(12 >> 2); //2진수 11 이란 의미가 됨. 3으로 출력.
+
+
+        //책 57쪽. 13. 반복문~
+        for (let i = 1; i < 10; i++) {
+
+        }
+        // for ~ of
+        let friends = [{ name: '라이언', age: 5 }, { name: '어피치', age: 4 }]
+        for (let friend of friends) {
+            console.log('이름:' + friend.name + ', 나이:' + friend.age);
+        }
+        //for ~ in
+        for (let prop in friends[0]) {
+            console.log('속성:' + prop + ', 값: ' + friends[0][prop]);
+        }
+        //forEach
+        friends[friends.length] = { name: '콘', age: 2 } //배열에 값 추가로 담기.
+        friends[friends.length] = { name: '무지', age: 3 }
+
+        //3살 이상 친구들만 표로 출력
+        let tlist = document.querySelector('#list');
+        friends.forEach(makeFriend);            
+
+        function makeFriend(friend, idx, friendsAry){
+            if (friend.age > 3) { //3살 이상 출력.
+                //if(friend['age'] > 3){   //위의 줄과 같은 표현.
+                //if(idx % 2 == 0) { //배열의 1,3번째 값 가져오기
+                // if(idx == friendsAry.length - 1){ //배열의 제일 마지막 값 가져오기.
+
+                console.log(friend, idx, friendsAry);
+                let tr = document.createElement('tr');
+                for (let prop in friend) {
+                    let td = document.createElement('td');
+                    td.innerText = friend[prop];
+                    tr.appendChild(td);
+                }
+                tlist.appendChild(tr);
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
