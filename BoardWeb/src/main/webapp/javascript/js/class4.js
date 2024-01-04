@@ -65,3 +65,4 @@ Object.defineProperty(friend, 'height', {
 });
 friend.height = 162;
 console.log(friend.height);
+
