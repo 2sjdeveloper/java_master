@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead id="theader"></thead>
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+        </tr>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script>
+        const fields = ['id', 'first_name', 'email']
+        const xhtp = new XMLHttpRequest();
+        xhtp.open('get', 'dataset.xml'); // (요청방식, 요청페이지) : 서버에 요청할 페이지를 지정할 수 있음. 
+        xhtp.send();
+        xhtp.onload = function () {
+            let doc = xhtp.responseXML
+            doc.querySelectorAll('record').forEach(record => {
+                console.log(record.children[1].innerHTML);
+            })
+
+        }
+
+        function makeJson() { //on어쩌고 하는 것들은 이벤트와 관련된 속성.
+            let data = JSON.parse(xhtp.responseText);
+            console.log(data); //data : 배열형태
+            let tbody = document.querySelector('#tbody');
+
+            data.forEach(item => { //item : 아이템 한 건.
+                let tr = document.createElement('tr');
+                fields.forEach(field => {
+                    let td = document.createElement('td');
+                    td.innerText = [field];
+                    tr.appendChild(td);
+                })
+                tbody.appendChild(tr);
+            })
+
+        }
+    </script>
+
+</body>
+
+</html>

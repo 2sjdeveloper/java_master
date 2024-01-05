@@ -3,20 +3,14 @@ package com.yedam.common;
 import com.yedam.member.service.MemberService;
 import com.yedam.member.serviceImpl.MemberServiceImpl;
 import com.yedam.member.vo.MemberVO;
+import com.yedam.reply.service.ReplyService;
+import com.yedam.reply.serviceImpl.ReplyServiceImpl;
 
 public class MainExe { // 테스트용 클래스
 	public static void main(String[] args) {
-		MemberService svc = new MemberServiceImpl();
-		MemberVO vo = svc.login("user1", "1111");
+		ReplyService svc = new ReplyServiceImpl();
+		svc.replyListPaging(2, 1).forEach(reply -> System.out.println(reply)); //2, 1 : 2번글의 첫번째 페이지.
 
-		if (vo != null) {
-			System.out.println(vo);
-			System.out.println("환영~! " + vo.getName() +"님 권한은 " + vo.getResponsibility());
-		} else {
-			System.out.println("id, pw 확인");
-		}
-
-		
 //		SqlSessionFactory factory = DataSource.getInstance();
 //		SqlSession session = factory.openSession(true);
 //
