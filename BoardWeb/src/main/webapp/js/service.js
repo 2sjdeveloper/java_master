@@ -2,8 +2,9 @@
  * service.js
  */
 
-function makeLi(reply = {}) {
+function makeLi(reply = {}) {	
 	//console.log(reply);
+	//start
 			let li = document.createElement('li');
 			let span = document.createElement('span');
 			span.innerText = '글번호: ' + reply.replyNo;
@@ -29,7 +30,9 @@ function makeLi(reply = {}) {
 					// console.log(result); 먼지 모르겠으면 콘솔에 쳐보기. 
 					if(result.retCode == 'OK'){
 						alert('삭제됨');
-						btn.parentElement.remove();
+						//btn.parentElement.remove();
+						//bno(게시글번호), page(페이지정보) => 페이지리스트, 페이징리스트를 새로 그려줌.
+						showList(pageInfo);
 					}else if(result.retCode =='NG'){
 						alert('처리중 에러');
 					}					

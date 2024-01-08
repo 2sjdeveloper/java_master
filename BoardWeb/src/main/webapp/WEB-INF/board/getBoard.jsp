@@ -3,7 +3,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<style>
+.pagination {
+	display: inline-block;
+}
 
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
 <%@ include file="../layout/menu.jsp"%>
 <%@ include file="../layout/nav.jsp"%>
 
@@ -73,6 +93,9 @@ ${logName } vs. ${vo.writer }
 	</ul>
 </div>
 
+<!--  페이징 처리. -->
+<div id="paging" class="pagination"></div>
+
 <a href="boardList.do">글목록으로</a>
 <script src="js/service.js"></script>
 <script>
@@ -84,22 +107,83 @@ ${logName } vs. ${vo.writer }
 	const bno = '${vo.boardNo}';
 	let ul = document.querySelector('#list');
 	
+	// 댓글 페이지를 클릭하면 페이지의 데이터를 보여주도록.
+let pageInfo = 1;
+function pageList(e){
+	e.preventDefault();
+	pageInfo = this.getAttribute("href");
+	showList(pageInfo);
+	
+	
+	//페이지를 생성하는 함수를 호출
+	
+	pagingList(pageInfo);
+}
+	
 	//Ajax 호출
-	const xhtp = new XMLHttpRequest();
-	xhtp.open('get', 'replyListJson.do?bno=' + bno)
-	xhtp.send()
-	xhtp.onload = function() {
-		let data = JSON.parse(xhtp.responseText); //json 문자열 -> 객체로 바꿔줌.
-		
-		data.forEach(reply => {
-			//start 함수생성범위 시작
-			let li = makeLi(reply);
-			 //end. 함수생성 범위 끝.
-			
-		
-			ul.appendChild(li);
-		})
+	function showList(page){
+		ul.innerHTML = '';
+		const xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'replyListJson.do?bno=' + bno + "&page=" + page);
+		xhtp.send()
+		xhtp.onload = function() {
+			let data = JSON.parse(xhtp.responseText); //json 문자열 -> 객체로 바꿔줌.		
+			data.forEach(reply => {
+				//start 함수생성범위 시작
+				let li = makeLi(reply);
+				 //end. 함수생성 범위 끝.		
+				ul.appendChild(li);			
+			})
+		}	
 	}
+	showList(pageInfo);
+	
+	//페이지 생성
+	let paging = document.querySelector('#paging')
+	pagingList();
+	
+	function pagingList(page = 1){
+		//다음 페이지를 기준으로 페이지 목록 생성
+		paging.innerHTML = '';
+		
+		let pagingAjax = new XMLHttpRequest();
+		pagingAjax.open('get', 'pagingListJson.do?bno=' + bno + "&page=" + page)
+		pagingAjax.send()
+		pagingAjax.onload = function(){
+			let result = JSON.parse(pagingAjax.responseText);
+			console.log(result);
+			//이전페이지 표시
+			if(result.prev){
+				let aTag = document.createElement('a');
+				aTag.href = result.startPage - 1;
+				aTag.innerText = '이전';
+				aTag.addEventListener('click', pageList); //클릭하면 pageList(콜백함수) 실행
+				paging.appendChild(aTag);				
+			}
+			//페이지 목록
+			for(let p = result.startPage; p <= result.lastPage; p++){
+				let aTag = document.createElement('a');
+				if (p == page){
+					aTag.setAttribute('class', 'active');
+				}
+				aTag.href = p;
+				aTag.innerText = p;
+				aTag.addEventListener('click', pageList); //클릭하면 pageList(콜백함수) 실행
+				paging.appendChild(aTag);
+			}
+			//다음페이지부터 표시
+			if(result.next){
+				let aTag = document.createElement('a');
+				aTag.href = result.lastPage + 1;
+				aTag.innerText = '다음';
+				aTag.addEventListener('click', pageList); //클릭하면 pageList(콜백함수) 실행
+				paging.appendChild(aTag);
+				
+				
+			}
+ 		}	
+	} // end of pagingList;
+	
 	
 	//등록버튼 클릭 이벤트 생성.
 	//document.querySelector('#addReply').addEventListener('click', function(){ }); //아래와 같은 표현
@@ -113,11 +197,12 @@ ${logName } vs. ${vo.writer }
 		addAjax.onload = function (){
 			let result = JSON.parse(addAjax.responseText);
 			if(result.retCode == 'OK'){			
-				let reply = result.vo;
+				//let reply = result.vo;
 				//start 함수생성범위 시작
-				let li = makeLi(reply);
+				//let li = makeLi(reply);
 				 //end. 함수생성 범위 끝.				
-				ul.appendChild(li); // 함수에서 빠지는 부분
+				//ul.appendChild(li); // 함수에서 빠지는 부분
+				showList(pageInfo);
 				
 				document.querySelector('#content').value='';
 			}else if (result.retCode == 'NG'){

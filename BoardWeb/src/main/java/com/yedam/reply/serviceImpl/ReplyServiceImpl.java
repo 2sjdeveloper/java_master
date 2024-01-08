@@ -1,5 +1,6 @@
 package com.yedam.reply.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.reply.mapper.ReplyMapper;
 import com.yedam.reply.service.ReplyService;
-import com.yedam.reply.vo.ReplyVO;
+import com.yedam.reply.vo.ReplyVO; //여기에 쓰고 빨간줄 뜨면 마우스 올려서 두번째꺼.
 
 public class ReplyServiceImpl implements ReplyService{
 	
@@ -34,7 +35,16 @@ public class ReplyServiceImpl implements ReplyService{
 	public List<ReplyVO> replyListPaging(int boardNo, int page) {
 		return mapper.replyListPaging(boardNo, page);
 	}
+	@Override
+	public int getTotalCnt(int boardNo){
+		return mapper.selectCount(boardNo);	
+	}
+	@Override
+	public List<HashMap<String, Object>> chartData() {
+		return mapper.selectReplyCnt();
+	}
 	
 	
+
 
 }

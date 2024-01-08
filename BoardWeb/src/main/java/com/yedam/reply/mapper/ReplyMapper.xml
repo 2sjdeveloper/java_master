@@ -10,7 +10,8 @@
 		from reply r
 		join member m
 		on r.replyer = m.id
-		where board_no = #{boardNo} order by 1  <!-- 세미콜론 있으면 안되고 쿼리만 있어야됨. -->
+		where
+		board_no = #{boardNo} order by 1 <!-- 세미콜론 있으면 안되고 쿼리만 있어야됨. -->
 	</select>
 
 	<select id="replyListPaging" resultType="reply">
@@ -20,8 +21,9 @@
 		from reply r
 		join member m
 		on r.replyer = m.id
-		where board_no = #{boardNo}
-		order by 1
+		where board_no =
+		#{boardNo}
+		order by 1 desc
 		) a) b
 		<![CDATA[
 		where b.rn > (#{page}-1)*5 and b.rn <= #{page}*5
@@ -47,8 +49,22 @@
 		from reply r
 		join member m
 		on r.replyer = m.id
-		where reply_no = #{replyNo}
+		where
+		reply_no = #{replyNo} order by 1
 	</select>
+	<select id="selectCount" resultType="int" parameterType="int">
+		select
+		count(*) from reply where board_no = #{boardNo}
+	</select>
+
+	<select id="selectReplyCnt" resultType="map">
+		select name "name", count(*) "cnt"
+		from reply r
+		join member m
+		on r.replyer = m.id
+		group by name
+	</select>
+
 </mapper>
 
 <!-- 닫으면 에러 없어짐.. -->
