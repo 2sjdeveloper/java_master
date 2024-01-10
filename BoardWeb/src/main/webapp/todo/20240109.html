@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
 			//등록버튼 클릭이벤트 제이쿼리 방식으로 등록.
-			$('#addBtn').on('click', function(){
+			$('#addBtn').on('click', function () {
 				let id = $('input[name="memberId"]').val();
 				let name = $('input[name="memberName"]').val();
 				let phone = $('input[name="phone"]').val();
@@ -20,80 +20,80 @@
 				template.find('td:eq(2)').text(phone);
 				template.removeClass('template'); //여러개 추가 방지
 				console.log(template);
-				
+
 				$('#list').append(template);
-				
+
 				//입력항목 초기화
 				$('input[name="memberId"]').val('');
 				$('input[name="memberName"]').val('');
 				$('input[name="phone"]').val('');
 			}) //등록이벤트 끝
-			
+
 			//선택삭제 이벤트
-			$('#delSelected').on('click', function(){
+			$('#delSelected').on('click', function () {
 				//$(':checked').parent().parent().remove();
-				$(':checked').parentsUntil('tbody').remove(); //tbody 전까지 지워줌.
+				$('tbody input[thpe="checkbox"]:checked').parentsUntil('tbody').remove(); //tbody 전까지 지워줌.
 			})
-			
+
 			//전체 선택
-			$('#checkAll').click(function(){
-				if($(checkAll).is(":checked")) $("input[name=chk]").prop("chedked",true);
-				else $("input[name=chk]").prop("checked", false);
+			$('thead input[type="checkbox"]').on('change', function () {
+					$('tbody input[type="checkbox"]').prop('checked', 'checked');
+				
 			})
-			
-        })
-    </script>
+
+		})
+	</script>
 </head>
 
 <body>
 
-    <h3>회원정보</h3>
-    <table class="table">
-        <tr>
-            <th>아이디</th>
-            <td><input type="text" name="memberId"></td>
-        </tr>
-        <tr>
-            <th>이름</th>
-            <td><input type="text" name="memberName"></td>
-        </tr>
-        <tr>
-            <th>연락처</th>
-            <td><input type="text" name="phone"></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <button id="addBtn">등록</button>
-                <button id="delSelected">선택삭제</button>
-            </td>
-        </tr>
-    </table>
+	<h3>회원정보</h3>
+	<table class="table">
+		<tr>
+			<th>아이디</th>
+			<td><input type="text" name="memberId"></td>
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td><input type="text" name="memberName"></td>
+		</tr>
+		<tr>
+			<th>연락처</th>
+			<td><input type="text" name="phone"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button id="addBtn">등록</button>
+				<button id="delSelected">선택삭제</button>
+			</td>
+		</tr>
+	</table>
 
-    <h3>회원목록</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>회원아이디</th>
-                <th>회원명</th>
-                <th>회원연락처</th>
-                <th><input type="checkbox" id="checkAll" name="checkAll"></th>
-            </tr>
-        </thead>
-        <tbody id="list">
-            <tr class="template">
-                <td>user1</td>
-                <td>홍길동</td>
-                <td>010-2342-4564</td>
-                <td><input type="checkbox" name="checkAll"></td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>김윤경</td>
-                <td>010-2223-9864</td>
-                <td><input type="checkbox" name="checkAll"></td>
-            </tr>
-        </tbody>
-    </table>
+	<h3>회원목록</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>회원아이디</th>
+				<th>회원명</th>
+				<th>회원연락처</th>
+				<th><input type="checkbox"></th>
+			</tr>
+		</thead>
+		<tbody id="list">
+			<tr class="template">
+				<td>user1</td>
+				<td>홍길동</td>
+				<td>010-2342-4564</td>
+				<td><input type="checkbox"></td>
+			</tr>
+			<tr>
+				<td>user2</td>
+				<td>김윤경</td>
+				<td>010-2223-9864</td>
+				<td><input type="checkbox"></td>
+			</tr>
+		</tbody>
+	</table>
 
 </body>
 
