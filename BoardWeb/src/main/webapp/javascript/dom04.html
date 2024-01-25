@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom04.html (24-01-23) dom = 태그를 제어하는 함수의 모임</title>
+</head>
+
+<body>
+    <input id="txtFruit">
+    <button id="btnAdd">추가</button>
+    <button id="btnDel">삭제</button>
+    <select id="selFruit" size="10">
+        <option>사과
+    </select>
+    <script>
+        //버튼 클릭 이벤트
+        btnAdd.addEventListener("click", function () {
+            //버튼 클릭 이벤트 내용 : input태그의 값을 읽어서 option 태그로 만들어서 select 태그에 append 한다
+            //value, createElement()  append()
+            let op = document.createElement("option");
+            op.innerText = txtFruit.value
+            selFruit.append(op);
+            txtFruit.value = ""
+        })
+        txtFruit.addEventListener("keypress", function () {
+            if (event.keyCode == 13) {
+                btnAdd.click();
+            }
+        })
+
+        //select 초기화 (option 태그 삭제)
+        btnDel.addEventListener("click", function () {
+            selFruit.innerHTML = "";
+        })
+
+         //화살표 함수.
+        var fruit = {
+            //a :function(){console.log("a")},
+            a: () => { console.log("a") },
+            //  b : function(){},
+            b: p => p * 2,
+            c() { },
+            // c: function(){}
+            d() { console.log("d") }
+        }
+        var name = 'choi';
+        var age = 20;
+        var emp = { name, age, print() { } }; // {name: name, age: age, print : function(){}, 필드명 : 값}. 필드명과 변수명이 일치하면 필드명 생략가능. 값자리에 함수가 올 수도 있다. 
+        
+
+
+    </script>
+</body>
+
+</html>
